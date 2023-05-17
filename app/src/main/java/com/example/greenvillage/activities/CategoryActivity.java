@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -39,6 +40,18 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         categoriesAdapter = new CategoriesAdapter(new ArrayList<>(), this);
         recyclerView.setAdapter(categoriesAdapter);
+
+        // Set the click listener for the categories
+        categoriesAdapter.setOnItemClickListener(new CategoriesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Category category) {
+                String slug = category.getSlug();
+                // Start the SubCategoryActivity and pass the slug
+                Intent intent = new Intent(CategoryActivity.this, SubCategoryActivity.class);
+                intent.putExtra("categorySlug", slug);
+                startActivity(intent);
+            }
+        });
 
         // Make the API call
         getCategories();

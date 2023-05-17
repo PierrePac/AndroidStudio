@@ -22,16 +22,26 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
     private List<Category> categories;
     private Context context;
+    private OnItemClickListener onItemClickListener;
 
     public CategoriesAdapter(List<Category> categories, Context context) {
         this.categories = categories;
         this.context = context;
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(Category category);
+    }
+
     public void setCategories(List<Category> categories) {
         this.categories = categories;
         notifyDataSetChanged();
     }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
+
 
     @NonNull
     @Override
@@ -57,6 +67,17 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                 .centerInside()
                 .override(100, 100)
                 .into(holder.categoryImage);
+
+        // Set click listener for the card
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Call the onItemClick method of the OnItemClickListener interface
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(category);
+                }
+            }
+        });
 
     }
 
