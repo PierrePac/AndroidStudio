@@ -15,8 +15,8 @@ public interface GameCatalogApi {
     @GET("categories")
     Call<List<Category>> getCategories();
 
-    @GET("categories/{categoryId}/subcategories")
-    Call<List<SubCategory>> getSubCategories(@Path("categoryId") String categoryId);
+    @GET("cat/{categorySlug}")
+    Call<List<SubCategory>> getSubCategories(@Path("categorySlug") String categorySlug);
 
     @GET("subcategories/{subCategoryId}/products")
     Call<List<Product>> getProducts(@Path("subCategoryId") String subCategoryId);

@@ -24,6 +24,7 @@ import retrofit2.Response;
 
 public class CategoryActivity extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "com.example.greenvillage.activities.MESSAGE";
     private GameCatalogApi gameCatalogApi;
     private RecyclerView recyclerView;
     private CategoriesAdapter categoriesAdapter;
@@ -48,7 +49,7 @@ public class CategoryActivity extends AppCompatActivity {
                 String slug = category.getSlug();
                 // Start the SubCategoryActivity and pass the slug
                 Intent intent = new Intent(CategoryActivity.this, SubCategoryActivity.class);
-                intent.putExtra("categorySlug", slug);
+                intent.putExtra(EXTRA_MESSAGE, slug);
                 startActivity(intent);
             }
         });
@@ -66,14 +67,11 @@ public class CategoryActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     List<Category> categories = response.body();
                     categoriesAdapter.setCategories(categories);
-
-
                 } else {
                     // Response is not successful
                     Log.d("Fail", " response unsecceful");
                     // Handle the case when the API call returns an error response
                     int statusCode = response.code();
-                    // ... Perform appropriate error handling based on the status code
                 }
             }
 

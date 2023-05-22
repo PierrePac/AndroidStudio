@@ -7,4 +7,9 @@
 
     <style name="AppTheme"></style>
 
+    <style name="AppTheme.SubCategory" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Other style attributes -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
