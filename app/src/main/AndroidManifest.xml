@@ -47,7 +47,12 @@
         <activity
             android:name=".activities.ProductsListActivity"
             android:label="@string/product_list_activity_title"
-            android:parentActivityName=".activities.SubCategoryActivity"/>
+            android:parentActivityName=".activities.SubCategoryActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.SubCategoryActivity" />
+        </activity>
+
 
         <activity
             android:name=".activities.ProductDetailActivity"

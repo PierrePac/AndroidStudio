@@ -1,6 +1,7 @@
 package com.example.greenvillage.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenvillage.R;
+import com.example.greenvillage.activities.ProductsListActivity;
 import com.example.greenvillage.models.SubCategory;
 
 import java.util.List;
@@ -33,8 +35,19 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull SubCategoryViewHolder holder, int position) {
+        // Get the subcategory at the current position
         SubCategory subCategory = subCategories.get(position);
-        holder.bind(subCategory);
+        // Set the subCategory name
+        holder.sub_nomination.setText(subCategory.getNomination());
+
+        // Set the click listener on the LinearLayout
+        holder.sub_nomination.setOnClickListener(v -> {
+            //Start the productListActivity and pass the slug as an extra
+            Context context = holder.itemView.getContext();
+            Intent intent = new Intent(context, ProductsListActivity.class);
+            intent.putExtra("subcategory_slug", subCategory.getSlug());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -49,15 +62,15 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
 
     class SubCategoryViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView tvNomination;
+        private TextView sub_nomination;
 
         SubCategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvNomination = itemView.findViewById(R.id.sub_nomination);
+            sub_nomination = itemView.findViewById(R.id.sub_nomination);
         }
 
         void bind(SubCategory subCategory) {
-            tvNomination.setText(subCategory.getNomination());
+            sub_nomination.setText(subCategory.getNomination());
         }
     }
 }
