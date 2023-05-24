@@ -1,9 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ProductDetailActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="-56dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Image Carousel -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/image_pager"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+
+            <!-- Short Libel -->
+            <TextView
+                android:id="@+id/text_short_libel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <!-- Long Libel -->
+            <TextView
+                android:id="@+id/text_long_libel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <!-- Prix HT -->
+            <TextView
+                android:id="@+id/text_prix_ht"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <!-- Add any other required views for additional product details -->
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

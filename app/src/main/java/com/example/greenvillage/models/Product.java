@@ -6,13 +6,15 @@ public class Product {
     private String shortLibel;
     private String longLibel;
     private double prixHt;
+    private String slug;
 
-    private Product(int id, String refProduit, String shortLibel, String longLibel, double prixHt){
+    private Product(int id, String refProduit, String shortLibel, String longLibel, double prixHt, String slug){
         this.id = id;
         this.refProduit = refProduit;
         this.shortLibel = shortLibel;
         this.longLibel = longLibel;
         this.prixHt = prixHt;
+        this.slug = slug;
     }
 
     public int getId() {
@@ -22,6 +24,7 @@ public class Product {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getRefProduit() {
         return refProduit;
@@ -54,5 +57,9 @@ public class Product {
     public void setPrixHt(double prixHt) {
         this.prixHt = prixHt;
     }
+
+    public String getSlug() { return slug; }
+
+    public void setSlug(String slug) { this.slug = slug;}
 
 }

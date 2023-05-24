@@ -1,6 +1,7 @@
 package com.example.greenvillage.adapters;
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,25 +19,26 @@ public class ProductsListAdapter extends RecyclerView.Adapter<ProductsViewHolder
 
     private  List<Product> productList;
 
-    public ProductsListAdapter() {
-        this.productList = new ArrayList<>();
+    public ProductsListAdapter(List<Product> productList) {
+        this.productList = productList != null ? productList : new ArrayList<>();
     }
 
     public void setProductList(List<Product> productList) {
-        this.productList = productList;
+        this.productList = productList != null ? productList : new ArrayList<>();
         notifyDataSetChanged();
     }
 
-    @NonNull
     @Override
     public ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, parent, false);
-        return new ProductsViewHolder(view);
+        return new ProductsViewHolder(view, productList); // Pass productList to the constructor
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position) {
         Product product = productList.get(position);
+        Log.d("ProductSlug", product.getSlug());
         holder.bind(product);
     }
 
@@ -45,3 +47,4 @@ public class ProductsListAdapter extends RecyclerView.Adapter<ProductsViewHolder
         return productList.size();
     }
 }
+

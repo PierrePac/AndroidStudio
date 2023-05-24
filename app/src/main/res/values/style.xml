@@ -5,11 +5,16 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme"></style>
-
     <style name="AppTheme.SubCategory" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Other style attributes -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize the toolbar color -->
+        <item name="colorPrimary">@color/primary_font</item>
+        <item name="colorPrimaryDark">@color/black</item>
+    </style>
+
 </resources>

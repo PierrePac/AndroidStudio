@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.greenvillage.R;
 import com.example.greenvillage.adapters.ProductsListAdapter;
@@ -14,6 +15,7 @@ import com.example.greenvillage.models.Product;
 import com.example.greenvillage.network.GameCatalogApi;
 import com.example.greenvillage.network.GameCatalogService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,7 +44,8 @@ public class ProductsListActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        productsListAdapter = new ProductsListAdapter();
+        productsListAdapter = new ProductsListAdapter(new ArrayList<>());
+        recyclerView.setAdapter(productsListAdapter);
 
         // Retrieve the slug from the intent extras
         String slug = getIntent().getStringExtra("subcategory_slug");
@@ -58,7 +61,10 @@ public class ProductsListActivity extends AppCompatActivity {
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if(response.isSuccessful()) {
                     List<Product> productList = response.body();
-                    productsListAdapter.setProductList(productList);
+                    if(productList != null) {
+                        productsListAdapter = new ProductsListAdapter(productList);
+                        recyclerView.setAdapter(productsListAdapter);
+                    }
                 } else {
                     // Handle the case when the API call returns an error response
                 }
