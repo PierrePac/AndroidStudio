@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.greenvillage.R;
 import com.example.greenvillage.adapters.ProductsListAdapter;
@@ -35,7 +34,7 @@ public class ProductsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products_list);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         // Set the title of the toolbar
         getSupportActionBar().setTitle("");
 

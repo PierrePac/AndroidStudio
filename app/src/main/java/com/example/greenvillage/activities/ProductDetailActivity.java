@@ -47,7 +47,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         // Set the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set the title of the toolbar
         getSupportActionBar().setTitle("");

@@ -3,7 +3,6 @@ package com.example.greenvillage.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +27,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import retrofit2.http.Tag;
 
 public class ProductsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
